@@ -1,7 +1,7 @@
 FROM java
 MAINTAINER ccw
-# https://blog.goodjack.tw/2019/03/apt-update-error-in-dockerfile-because-docker-jessie-has-been-archived.html
-RUN sed -i '/jessie-updates/d' /etc/apt/sources.list  # Now archived
+# https://superuser.com/questions/1423486/issue-with-fetching-http-deb-debian-org-debian-dists-jessie-updates-inrelease
+RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get install -y wget
 
