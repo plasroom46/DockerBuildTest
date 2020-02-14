@@ -1,7 +1,7 @@
 FROM java
 MAINTAINER ccw
 # https://www.jesusamieiro.com/failed-to-fetch-http-ftp-debian-org-debian-dists-jessie-updates-main-404-not-found/
-RUN sudo apt-get -o Acquire::Check-Valid-Until=false update
+RUN echo "Acquire::Check-Valid-Until false;" | sudo tee -a /etc/apt/apt.conf.d/10-nocheckvalid
 RUN apt-get install -y wget
 
 RUN cd /
