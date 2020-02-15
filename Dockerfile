@@ -1,7 +1,8 @@
 FROM java
 MAINTAINER ccw
-# https://www.jesusamieiro.com/failed-to-fetch-http-ftp-debian-org-debian-dists-jessie-updates-main-404-not-found/
-RUN echo "Acquire::Check-Valid-Until false;" | sudo tee -a /etc/apt/apt.conf.d/10-nocheckvalid
+
+# https://unix.stackexchange.com/questions/517838/how-to-install-debian-jessie-backports-package-after-package-removal-using-docke
+RUN echo "deb http://ftp.debian.org/debian jessie main" > /etc/apt/sources.list
 RUN apt-get install -y wget
 
 RUN cd /
